@@ -1,6 +1,12 @@
+'use client'
+
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
+import * as gtag from './gtag'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,8 +20,38 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // це повинен був бути спосіб трекати перехід на іншу сторіку в умовах роутера
+  // const router = useRouter()
+  // useEffect(() => {
+  //   const handleRouteChange = url => {
+  //     gtag.pageview(url)
+  //   }
+  //   router.events.on("routeChangeComplete", handleRouteChange)
+  //   return () => {
+  //     router.events.off("routeChangeComplete", handleRouteChange)
+  //   }
+  // }, [router.events])
+
   return (
     <html lang="en">
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
       <body className={inter.className}>{children}</body>
     </html>
   )
