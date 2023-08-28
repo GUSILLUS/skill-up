@@ -1,17 +1,22 @@
 'use client'
 
-import Image from 'next/image'
-import { eventMetric } from './gtag'
-import { MainForm } from '@/components/mainForm'
+import { MainForm } from './features/main-form'
+import { useEffect, useState } from 'react'
+import { CircularProgress } from '@material-ui/core';
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4 p-24">
-      <h1 className="text-xl">
-        Sign in
-      </h1>
+  const [isLoading, setIsLoading] = useState(true);
 
-      <MainForm classNames="flex flex-col items-center gap-2 bg-gray-300 p-5 rounded-md" />
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 2000);
+
+  }, [])
+
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center p-12 lg:p-24">
+      {isLoading ? <CircularProgress size={80} /> : <MainForm />}
     </main>
   )
 }
