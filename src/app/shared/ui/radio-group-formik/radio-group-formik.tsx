@@ -11,13 +11,13 @@ interface RadioOption {
   label: string;
 }
 
-interface RadioWrapperProps {
+interface RadioGroupProps {
   name: string;
   options: RadioOption[];
   label: string;
 }
 
-export const RadioWrapper: FunctionComponent<RadioWrapperProps> = ({
+export const RadioGroupFormik: FunctionComponent<RadioGroupProps> = ({
   name,
   options,
   label,

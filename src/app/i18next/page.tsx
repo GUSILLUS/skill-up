@@ -1,11 +1,11 @@
 'use client'
-import React from 'react';
-import { MainForm } from './features/main-form'
-import { useEffect, useState } from 'react'
-import { Button, CircularProgress } from '@material-ui/core';
-import { useRouter } from 'next/navigation';
+import React from "react";
+import { Button, CircularProgress } from "@material-ui/core";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { LanguageSwitcher } from "../features/language-switcher";
 
-export default function Home() {
+export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -18,15 +18,15 @@ export default function Home() {
   const router = useRouter()
 
   const onClick = () => {
-    router.push('/i18next')
+    router.push('/')
   }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-5 p-12 lg:p-24">
       {isLoading ? <CircularProgress size={80} /> : (
         <>
-          <MainForm />
-  
+          <LanguageSwitcher />
+        
           <Button 
             fullWidth={false}
             size="large"
@@ -34,7 +34,7 @@ export default function Home() {
             variant="contained"
             color="primary"
           >
-            Go to i18next
+            Go to Formik
           </Button>
         </>
       )}

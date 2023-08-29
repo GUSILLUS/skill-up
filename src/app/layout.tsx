@@ -1,12 +1,10 @@
 'use client'
 
 import './globals.css'
+import React from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Script from 'next/script'
-import * as gtag from './gtag'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import './i18n'
 
 const inter = Inter({ subsets: ['latin'] })
 

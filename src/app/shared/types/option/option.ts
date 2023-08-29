@@ -1,4 +1,4 @@
-export type Gender = {
+export type Option = {
   value: string,
   label: string,
 };

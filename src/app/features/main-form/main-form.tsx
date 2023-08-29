@@ -1,7 +1,9 @@
+import React from "react";
 import { Field, Form, useFormik, FormikProvider } from "formik";
 
 import { profileSchema } from "./helpers/validation";
 import {
+  Button,
   Container,
   Grid,
   Typography
@@ -10,13 +12,14 @@ import {
   TextField,
 } from 'formik-mui';
 import { ProfileForm } from "@/app/shared/types/profile";
-import { CheckboxWrapper } from "@/app/shared/ui/checkbox";
-import { SelectWrapper } from "@/app/shared/ui/select/select";
-import { ButtonWrapper } from "@/app/shared/ui/button";
-import { RadioWrapper } from "@/app/shared/ui/radio-button";
+import { CheckboxFormik } from "@/app/shared/ui/checkbox-formik";
+import { SelectFormik } from "@/app/shared/ui/select-formik/select-formik";
+import { RadioGroupFormik } from "@/app/shared/ui/radio-group-formik";
 import { roles, genders } from "./helpers/data";
+import { useRouter } from "next/navigation";
 
 export const MainForm = () => {
+  const router = useRouter()
   const formik = useFormik<ProfileForm>({
     initialValues: {
       userName: '',
@@ -31,9 +34,10 @@ export const MainForm = () => {
     validateOnChange: true,
     validationSchema: profileSchema,
     onSubmit: async values => {
-        await new Promise((r) => setTimeout(r, 500));
-        alert(JSON.stringify(values, null, 2));
-      }
+      // await new Promise((r) => setTimeout(r, 500));
+      // alert(JSON.stringify(values, null, 2));
+      router.push(`/i18next?username=${values.userName}&role=${values.role}&gender=${values.gender}&subs=${values.subs}`)
+    }
   });
 
   return (
@@ -57,7 +61,7 @@ export const MainForm = () => {
                   type="text"
                   label="Username"
                   fullWidth
-                /> 
+                />
               </Grid>
 
               <Grid item xs={12} sm={6}>
@@ -91,16 +95,15 @@ export const MainForm = () => {
               </Grid>
 
               <Grid item xs={12}>
-                <RadioWrapper
+                <RadioGroupFormik
                   name="gender"
                   label="Choose your gender:"
                   options={genders}
                 />
               </Grid>
 
-
               <Grid item xs={12}>
-                <SelectWrapper 
+                <SelectFormik
                   name="role"
                   label="Roles"
                   options={roles}
@@ -108,7 +111,7 @@ export const MainForm = () => {
               </Grid>
 
               <Grid item xs={12}>
-                <CheckboxWrapper
+                <CheckboxFormik
                   name="subs"
                   legend="Do want to subscribe to our news?"
                   label="Yep"
@@ -116,17 +119,19 @@ export const MainForm = () => {
               </Grid>
 
               <Grid item xs='auto'>
-                <ButtonWrapper>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth={true}
+                  color="primary"
+                >
                   Submit Form
-                </ButtonWrapper>
+                </Button>
               </Grid>
-
-
             </Grid>
-
           </Form>
         </FormikProvider>
       </Container>
     </Grid>
   )
-}
+};

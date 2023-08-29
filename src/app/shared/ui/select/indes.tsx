@@ -1,1 +1,0 @@
-export { SelectWrapper } from './select';
