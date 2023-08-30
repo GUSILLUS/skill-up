@@ -2,7 +2,7 @@ import React from 'react';
 import { useAddUserMutation } from '@/shared/services/api'; 
 import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { User } from '@/shared/types/user';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography } from '@mui/material';
 import { TextField } from 'formik-mui';
 import { userSchema } from '@/shared/schema/userSchema';
 

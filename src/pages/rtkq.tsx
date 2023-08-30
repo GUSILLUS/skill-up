@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import { Button, CircularProgress } from "@material-ui/core";
+import { Button, CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UserList } from "../features/users-list";

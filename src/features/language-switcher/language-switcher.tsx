@@ -1,5 +1,5 @@
 import { Languages } from '@/shared/types/language';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import Diversity1SharpIcon from '@mui/icons-material/Diversity1Sharp';
 import PeopleAltSharpIcon from '@mui/icons-material/PeopleAltSharp';

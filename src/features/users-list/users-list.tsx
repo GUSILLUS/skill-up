@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UserCard } from '../user-card';
 import { User } from '@/shared/types/user';
-import { Dialog, DialogTitle, List } from '@material-ui/core';
+import { Dialog, DialogTitle, List } from '@mui/material';
 import { ManageUserForm } from '../manage-user-form';
 
 type Props = {
