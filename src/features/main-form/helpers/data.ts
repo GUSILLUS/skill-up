@@ -1,4 +1,4 @@
-import { Option } from '@/app/shared/types/option';
+import { Option } from '@/shared/types/option';
 
 export const roles: Option[] = [
   { value: 'editor', label: 'Editor'},
