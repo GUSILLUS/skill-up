@@ -1,0 +1,10 @@
+{
+  "greeting": "Hello, {{name}}!",
+  "roleInfo": "You have selected the role: {{role}}",
+  "male": "male ",
+  "female": "female ",
+  "gender": "Your gender - ",
+  "other": "Other",
+  "sub": "Thanks for your subscribe",
+  "longText": "In today's tech-driven world, innovations unfold rapidly, reshaping how we live, work, and connect. From AI's ascent to e-commerce's expansion, change is constant. Connectivity bridges cultures, yet concerns over privacy and ethics persist. Striking a balance between progress and responsibility is our compass as we navigate this dynamic landscape."
+}
