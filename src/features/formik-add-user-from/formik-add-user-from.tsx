@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAddUserMutation } from '@/api';
+import { useAddUserMutation } from '@/shared/services/api'; 
 import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { User } from '@/shared/types/user';
 import { Button, Typography } from '@material-ui/core';
@@ -9,14 +9,13 @@ import { userSchema } from '@/shared/schema/userSchema';
 type Props = {
   handleAdd: (newUser: User) => void;
 }
-export const UserAddForm = ({handleAdd}: Props) => {
+export const FormikAddUserForm = ({handleAdd}: Props) => {
   const [addUser, { isLoading }] = useAddUserMutation();
 
   const formik = useFormik<User>({
     initialValues: {
       name: '',
       email: '',
-      id: 1,
       username: '',
       website: '',
     },

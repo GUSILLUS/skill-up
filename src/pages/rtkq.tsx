@@ -4,9 +4,9 @@ import { Button, CircularProgress } from "@material-ui/core";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UserList } from "../features/users-list";
-import { UserAddForm } from "@/features/user-add-form";
 import { User } from "@/shared/types/user";
-import { useDeleteUserMutation, useFetchUsersQuery } from "@/api";
+import { useDeleteUserMutation, useFetchUsersQuery } from '@/shared/services/api'
+import { ManageUserForm } from "@/features/manage-user-form";
 
 export default function Page() {
   const { data: users, isLoading } = useFetchUsersQuery();
@@ -52,7 +52,7 @@ export default function Page() {
         <>
           <div className="flex gap-2">
             <UserList users={showedUsers} handleDelete={handleDelete} isLoading={isDeleting} handleUpdate={handleUpdate}/>
-            <UserAddForm handleAdd={handleAdd} />
+            <ManageUserForm type='add' handleAdd={handleAdd} />
           </div>
           
 
