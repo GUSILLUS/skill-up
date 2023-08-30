@@ -4,6 +4,7 @@ import { Button, CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LanguageSwitcher } from "../features/language-switcher";
+import { Layout } from "@/shared/ui/layout";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +27,7 @@ export default function Page() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-5 p-12 lg:p-24">
+    <Layout>
       {isLoading ? <CircularProgress size={80} /> : (
         <>
           <LanguageSwitcher />
@@ -54,6 +55,6 @@ export default function Page() {
           </div>
         </>
       )}
-    </main>
+    </Layout>
   )
 }

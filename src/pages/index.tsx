@@ -4,7 +4,7 @@ import { MainForm } from '../features/main-form'
 import { useEffect, useState } from 'react'
 import { Button, CircularProgress } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { Layout } from '@/shared/ui/layout/layout';
+import { Layout } from '@/shared/ui/layout';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

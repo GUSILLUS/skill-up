@@ -7,6 +7,7 @@ import { UserList } from "../features/users-list";
 import { User } from "@/shared/types/user";
 import { useDeleteUserMutation, useFetchUsersQuery } from '@/shared/services/api'
 import { ManageUserForm } from "@/features/manage-user-form";
+import { Layout } from "@/shared/ui/layout";
 
 export default function Page() {
   const { data: users, isLoading } = useFetchUsersQuery();
@@ -47,7 +48,7 @@ export default function Page() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-5 p-12 lg:p-24">
+    <Layout>
       {isLoading ? <CircularProgress size={80} /> : (
         <>
           <div className="flex gap-2">
@@ -80,6 +81,6 @@ export default function Page() {
           
         </>
       )}
-    </main>
+    </Layout>
   )
 }

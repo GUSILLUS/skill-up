@@ -1,1 +1,1 @@
-export { RootLayout } from './layout'
+export { Layout } from './layout'
