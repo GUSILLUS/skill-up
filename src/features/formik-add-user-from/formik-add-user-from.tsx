@@ -32,7 +32,7 @@ export const FormikAddUserForm = ({handleAdd}: Props) => {
       const user = await addUser(newUser);
       console.log(user);
 
-      if(user.data) {
+      if('data' in user) {
        handleAdd(user.data)
       }
       formik.resetForm();

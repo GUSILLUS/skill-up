@@ -18,7 +18,7 @@ export const FormikUpdateUserForm = ({ user, onCancel, onUpdate }: Props) => {
     try {
       const updatedUser = await updateUser({ id: user.id || 0, updatedUser: values });
       onCancel();
-      if (updatedUser.data) {
+      if ('data' in updatedUser) {
         onUpdate(updatedUser.data);
       }
     } catch (error) {
