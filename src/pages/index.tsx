@@ -2,7 +2,7 @@
 import React from 'react';
 import { MainForm } from '../features/main-form'
 import { useEffect, useState } from 'react'
-import { Button, CircularProgress } from '@material-ui/core';
+import { Button, CircularProgress } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { Layout } from '@/shared/ui/layout/layout';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUpdateUserMutation } from '@/api';
+import { useUpdateUserMutation } from '@/shared/services/api'; 
 import { Formik, Form, Field } from 'formik';
 import { TextField, Button, Grid } from '@mui/material';
 import { User } from '@/shared/types/user';
@@ -11,12 +11,12 @@ type Props = {
   onUpdate: (updatedUser: User) => void;
 }
 
-export const UserUpdateForm = ({ user, onCancel, onUpdate }: Props) => {
+export const FormikUpdateUserForm = ({ user, onCancel, onUpdate }: Props) => {
   const [updateUser, { isLoading }] = useUpdateUserMutation();
 
   const handleSubmit = async (values: User) => {
     try {
-      const updatedUser = await updateUser({ id: user.id, updatedUser: values });
+      const updatedUser = await updateUser({ id: user.id || 0, updatedUser: values });
       onCancel();
       if (updatedUser.data) {
         onUpdate(updatedUser.data);

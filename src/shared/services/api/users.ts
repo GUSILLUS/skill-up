@@ -1,7 +1,7 @@
+import { User } from '@/shared/types/user';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { User } from '../shared/types/user';
 
-export const api = createApi({
+export const usersApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://jsonplaceholder.typicode.com',
   }),
@@ -37,4 +37,4 @@ export const {
   useAddUserMutation,
   useUpdateUserMutation,
   useDeleteUserMutation,
-} = api;
+} = usersApi;

@@ -1,9 +1,8 @@
-// pages/index.js
 import React, { useState } from 'react';
 import { UserCard } from '../user-card';
 import { User } from '@/shared/types/user';
-import { Dialog, DialogTitle, List } from '@material-ui/core';
-import { UserUpdateForm } from '../user-update-form';
+import { Dialog, DialogTitle, List } from '@mui/material';
+import { ManageUserForm } from '../manage-user-form';
 
 type Props = {
   users: User[],
@@ -33,7 +32,7 @@ export const UserList = ({ users, handleDelete, isLoading, handleUpdate }: Props
 
       <Dialog open={Boolean(selectedUser)} onClose={handleCancelEdit} className="p-3">
         <DialogTitle>Edit User</DialogTitle>
-        {selectedUser && <UserUpdateForm user={selectedUser} onCancel={handleCancelEdit} onUpdate={handleUpdate} />}
+        {selectedUser && <ManageUserForm type="update" user={selectedUser} onCancel={handleCancelEdit} onUpdate={handleUpdate} />}
       </Dialog>
       </List>
     </div>
