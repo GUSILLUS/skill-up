@@ -50,4 +50,9 @@ export const authConfig: AuthOptions = {
   session: {
     strategy: 'jwt',
   },
+  callbacks: {
+    async jwt({ token }) {
+      return token;
+    },
+  },
 };
