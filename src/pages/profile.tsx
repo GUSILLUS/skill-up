@@ -9,8 +9,6 @@ export default function Profile() {
   const [isLoading, setIsLoading] = useState(true);
   const { data: session } = useSession();
 
-  console.log(session);
-
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -28,7 +26,7 @@ export default function Profile() {
             <Typography variant="h5" fontWeight={600} gutterBottom>
               Profile Info:
             </Typography>
-            <Typography variant="body1">Name: {session?.user?.name}!</Typography>
+            <Typography variant="body1">Name: {session?.user?.name}</Typography>
             <Typography variant="body1">Email: {session?.user?.email}</Typography>
           </Paper>
         </>

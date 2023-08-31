@@ -4,13 +4,14 @@ import { clientPromise } from '@/shared/utils';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    const { email, password } = req.body;
+    const { email, password, name } = req.body;
 
     try {
       const client = await clientPromise;
       const usersCollection = client.db(process.env.DB_NAME).collection('users');
 
       await usersCollection.insertOne({
+        name: name,
         email: email.toLowerCase(),
         password,
       });

@@ -48,14 +48,15 @@ export const Navigation = ({ navItems }: Props) => {
         )}
       </List>
 
-      <Link
-        href={session?.data ? '' : '/api/auth/signin'}
-        onClick={() => (session?.data ? signOut({ callbackUrl: '/' }) : '')}
+      <Button
+        fullWidth={false}
+        size="medium"
+        variant="contained"
+        color="info"
+        onClick={() => (session?.data ? signOut({ callbackUrl: '/' }) : signIn())}
       >
-        <Button fullWidth={false} size="medium" variant="contained" color="info">
-          {session?.data ? 'Sign Out' : 'Sign In'}
-        </Button>
-      </Link>
+        {session?.data ? 'Sign Out' : 'Sign In'}
+      </Button>
     </Toolbar>
   );
 };

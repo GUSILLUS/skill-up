@@ -5,6 +5,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import { clientPromise } from '@/shared/utils';
 
 export const authConfig: AuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -24,6 +25,8 @@ export const authConfig: AuthOptions = {
         if (!user) {
           throw new Error('User does not exist.');
         }
+
+        console.log(user);
 
         //validate password
         const passwordIsValid = credentials?.password === user.password;
