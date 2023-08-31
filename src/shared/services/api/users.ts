@@ -1,16 +1,17 @@
-import { User } from '@/shared/types/user';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+import { User } from '@/shared/types/user';
 
 export const usersApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://jsonplaceholder.typicode.com',
   }),
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     fetchUsers: builder.query<User[], void>({
       query: () => '/users',
     }),
     addUser: builder.mutation<User, Partial<User>>({
-      query: (newUser) => ({
+      query: newUser => ({
         url: '/users',
         method: 'POST',
         body: newUser,
@@ -24,7 +25,7 @@ export const usersApi = createApi({
       }),
     }),
     deleteUser: builder.mutation<void, number>({
-      query: (id) => ({
+      query: id => ({
         url: `/users/${id}`,
         method: 'DELETE',
       }),
@@ -32,9 +33,4 @@ export const usersApi = createApi({
   }),
 });
 
-export const {
-  useFetchUsersQuery,
-  useAddUserMutation,
-  useUpdateUserMutation,
-  useDeleteUserMutation,
-} = usersApi;
+export const { useFetchUsersQuery, useAddUserMutation, useUpdateUserMutation, useDeleteUserMutation } = usersApi;

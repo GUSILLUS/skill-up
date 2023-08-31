@@ -1,24 +1,14 @@
-import React, { ChangeEvent, FC } from 'react';
-import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel
-} from '@mui/material';
+import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from '@mui/material';
 import { useField } from 'formik';
+import { ChangeEvent, FC } from 'react';
 
-interface CheckboxProps {
+type CheckboxProps = {
   name: string;
   label: string;
   legend: string;
-}
+};
 
-export const FormikCheckbox: FC<CheckboxProps> = ({
-  name,
-  label,
-  legend,
-}) => {
+export const FormikCheckbox: FC<CheckboxProps> = ({ name, label, legend }) => {
   const [field, meta, { setValue }] = useField(name);
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
@@ -27,13 +17,10 @@ export const FormikCheckbox: FC<CheckboxProps> = ({
   };
 
   return (
-    <FormControl error={meta && meta.touched && !!meta.error} >
+    <FormControl error={meta && meta.touched && !!meta.error}>
       <FormLabel component="legend">{legend}</FormLabel>
       <FormGroup>
-        <FormControlLabel
-          control={<Checkbox {...field} onChange={handleChange} />}
-          label={label}
-        />
+        <FormControlLabel control={<Checkbox {...field} onChange={handleChange} />} label={label} />
       </FormGroup>
     </FormControl>
   );

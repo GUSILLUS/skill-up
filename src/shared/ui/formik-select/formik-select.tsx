@@ -1,19 +1,16 @@
-import React, { ChangeEvent, FC } from 'react';
 import { TextField, MenuItem } from '@mui/material';
 import { useField } from 'formik';
+import { ChangeEvent, FC } from 'react';
+
 import { Option } from '../../types/option';
 
-interface SelectWrapperProps {
+type SelectWrapperProps = {
   name: string;
   options: Option[];
   label: string;
-}
+};
 
-export const FormikSelect: FC<SelectWrapperProps> = ({
-  name,
-  options,
-  label,
-}) => {
+export const FormikSelect: FC<SelectWrapperProps> = ({ name, options, label }) => {
   const [field, meta, { setValue }] = useField(name);
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
@@ -22,14 +19,14 @@ export const FormikSelect: FC<SelectWrapperProps> = ({
   };
 
   return (
-    <TextField 
-      {...field} 
-      label={label} 
-      select={true} 
-      variant="outlined" 
-      fullWidth 
-      error={meta && meta.touched && !!meta.error} 
-      onChange={handleChange} 
+    <TextField
+      {...field}
+      label={label}
+      select={true}
+      variant="outlined"
+      fullWidth
+      error={meta && meta.touched && !!meta.error}
+      onChange={handleChange}
       helperText={meta.error || ''}
     >
       {options.map(({ value, label }) => {
@@ -37,7 +34,7 @@ export const FormikSelect: FC<SelectWrapperProps> = ({
           <MenuItem key={value} value={value}>
             {label}
           </MenuItem>
-        )
+        );
       })}
     </TextField>
   );

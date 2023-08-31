@@ -1,15 +1,15 @@
-import React from 'react';
-import { useUpdateUserMutation } from '@/shared/services/api'; 
-import { Formik, Form, Field } from 'formik';
 import { TextField, Button, Grid } from '@mui/material';
+import { Formik, Form, Field } from 'formik';
+
+import { userSchema } from '@/shared/schema/user-schema';
+import { useUpdateUserMutation } from '@/shared/services/api';
 import { User } from '@/shared/types/user';
-import { userSchema } from '@/shared/schema/userSchema';
 
 type Props = {
   user: User;
   onCancel: () => void;
   onUpdate: (updatedUser: User) => void;
-}
+};
 
 export const FormikUpdateUserForm = ({ user, onCancel, onUpdate }: Props) => {
   const [updateUser, { isLoading }] = useUpdateUserMutation();
@@ -49,7 +49,7 @@ export const FormikUpdateUserForm = ({ user, onCancel, onUpdate }: Props) => {
               </Button>
               <Button variant="outlined" onClick={onCancel}>
                 Cancel
-              </Button> 
+              </Button>
             </div>
           </Grid>
         </Grid>

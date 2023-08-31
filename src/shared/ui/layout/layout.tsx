@@ -1,13 +1,10 @@
-import React from 'react'
+import { Header } from '../header';
 
-export function Layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-5 p-12 lg:p-24">
-      {children}
-    </main>
-  )
+    <>
+      <Header />
+      <main className="flex flex-col items-center justify-center gap-5 p-8 h-full">{children}</main>
+    </>
+  );
 }
