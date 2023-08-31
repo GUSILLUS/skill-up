@@ -27,7 +27,7 @@ export const LanguageSwitcher = () => {
   const subs = useSearchParams().get('subs') || '';
 
   return (
-    <div className="flex flex-col gap-2 p-4 bg-slate-100 rounded-md w-1/2">
+    <div className="flex flex-col gap-2 p-4 bg-slate-100 rounded-md w-full md:w-1/2">
       <div className="flex gap-2 mb-2">
         {Object.keys(lngs).map(lng => (
           <Button

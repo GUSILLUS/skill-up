@@ -25,25 +25,23 @@ export const UserList = ({ users, handleDelete, isLoading, handleUpdate }: Props
   };
 
   return (
-    <div className="flex flex-col items-center bg-slate-100 w-full">
-      <List className="flex flex-wrap justify-center">
-        {users?.map(user => (
-          <UserCard
-            key={user.id}
-            user={user}
-            handleDelete={handleDelete}
-            isLoading={isLoading}
-            handleClick={handleEditClick}
-          />
-        ))}
+    <List className="flex flex-wrap justify-center w-full bg-slate-100 rounded-md">
+      {users?.map(user => (
+        <UserCard
+          key={user.id}
+          user={user}
+          handleDelete={handleDelete}
+          isLoading={isLoading}
+          handleClick={handleEditClick}
+        />
+      ))}
 
-        <Dialog open={Boolean(selectedUser)} onClose={handleCancelEdit} className="p-3">
-          <DialogTitle>Edit User</DialogTitle>
-          {selectedUser && (
-            <ManageUserForm type="update" user={selectedUser} onCancel={handleCancelEdit} onUpdate={handleUpdate} />
-          )}
-        </Dialog>
-      </List>
-    </div>
+      <Dialog open={Boolean(selectedUser)} onClose={handleCancelEdit}>
+        <DialogTitle>Edit User</DialogTitle>
+        {selectedUser && (
+          <ManageUserForm type="update" user={selectedUser} onCancel={handleCancelEdit} onUpdate={handleUpdate} />
+        )}
+      </Dialog>
+    </List>
   );
 };

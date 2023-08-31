@@ -35,7 +35,7 @@ export default function Home() {
                 elevation={10}
                 sx={{ padding: 3, marginTop: 5 }}
                 variant="elevation"
-                className="flex flex-col gap-3 w-1/2"
+                className="flex flex-col gap-3 w-2/3 md:w-1/2"
               >
                 <Typography variant="h4" gutterBottom textAlign="center">
                   Sign In/Up Required
@@ -65,11 +65,12 @@ export default function Home() {
                       <Button variant="contained" color="primary" href="/api/auth/signin">
                         Sign In
                       </Button>
-                      <Typography variant="caption" className="flex justify-center items-center">
+                      <Typography variant="caption" className="flex flex-col md:flex-row justify-center items-center">
                         if you dont have an account you can
                         <Button
                           variant="text"
                           color="primary"
+                          className="p-0"
                           size="small"
                           onClick={() => setSignup(true)}
                           style={{ textTransform: 'none', padding: '0' }}

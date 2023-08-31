@@ -16,18 +16,12 @@ export const Navigation = ({ navItems }: Props) => {
   const router = useRouter();
 
   return (
-    <Toolbar className="flex gap-3 justify-between">
+    <Toolbar className="md:flex gap-3 justify-between hidden">
       <ArrowCircleUpSharpIcon fontSize="large" />
       <List className="flex gap-2">
         {navItems.map(({ label, href }) => (
           <Link href={href} key={label}>
-            <Button
-              fullWidth={false}
-              size="medium"
-              variant="contained"
-              color="info"
-              disabled={router.pathname === href}
-            >
+            <Button fullWidth={false} size="small" variant="contained" color="info" disabled={router.pathname === href}>
               {label}
             </Button>
           </Link>
@@ -37,7 +31,7 @@ export const Navigation = ({ navItems }: Props) => {
           <Link href="/profile">
             <Button
               fullWidth={false}
-              size="medium"
+              size="small"
               variant="contained"
               color="info"
               disabled={router.pathname === '/profile'}
@@ -50,7 +44,7 @@ export const Navigation = ({ navItems }: Props) => {
 
       <Button
         fullWidth={false}
-        size="medium"
+        size="small"
         variant="contained"
         color="info"
         onClick={() => (session?.data ? signOut({ callbackUrl: '/' }) : signIn())}

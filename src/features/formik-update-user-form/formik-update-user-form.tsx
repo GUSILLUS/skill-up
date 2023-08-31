@@ -44,10 +44,10 @@ export const FormikUpdateUserForm = ({ user, onCancel, onUpdate }: Props) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div className="flex gap-2">
-              <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+              <Button type="submit" variant="contained" color="primary" size="small" disabled={isLoading}>
                 Update User
               </Button>
-              <Button variant="outlined" onClick={onCancel}>
+              <Button variant="outlined" size="small" onClick={onCancel}>
                 Cancel
               </Button>
             </div>

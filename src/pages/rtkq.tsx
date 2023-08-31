@@ -44,7 +44,7 @@ export default function Page() {
       {isLoading ? (
         <CircularProgress size={80} />
       ) : (
-        <div className="flex gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           <UserList
             users={showedUsers}
             handleDelete={handleDelete}

@@ -40,7 +40,7 @@ export const FormikAddUserForm = ({ handleAdd }: Props) => {
   });
 
   return (
-    <div className="w-3/12">
+    <div className="w-full md:w-3/12">
       <Typography component="h2" variant="h5" className="text-center">
         Add User
       </Typography>

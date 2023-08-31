@@ -1,6 +1,7 @@
 import type { AuthOptions } from 'next-auth';
 import Credential from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
+import GitHubProvider from 'next-auth/providers/github';
 
 import { clientPromise } from '@/shared/utils';
 
@@ -10,6 +11,10 @@ export const authConfig: AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_SECRET as string,
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_SECRET as string,
     }),
     Credential({
       name: 'Credentials',
