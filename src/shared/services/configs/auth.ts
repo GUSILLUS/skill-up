@@ -1,7 +1,7 @@
 import type { AuthOptions } from 'next-auth';
 import Credential from 'next-auth/providers/credentials';
-import GoogleProvider from 'next-auth/providers/google';
 import GitHubProvider from 'next-auth/providers/github';
+import GoogleProvider from 'next-auth/providers/google';
 
 import { clientPromise } from '@/shared/utils';
 
