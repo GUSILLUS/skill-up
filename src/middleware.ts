@@ -4,10 +4,12 @@ import { withAuth } from 'next-auth/middleware';
 export default withAuth({
   callbacks: {
     authorized({ req, token }) {
-      if (req.nextUrl.pathname === '/') return true;
+      if (req.nextUrl.pathname === '/' || req.nextUrl.pathname === '/api/signup/signup') return true;
       return !!token;
     },
   },
 });
 
-export const config = { matcher: ['/formik', '/i18next', '/rtkq', '/profile'] };
+export const config = {
+  matcher: ['/((?!.*\\..*|_next).*)'],
+};
