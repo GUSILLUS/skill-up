@@ -1,5 +1,6 @@
-import { TextField, Button, CircularProgress } from '@mui/material';
-import { Form, FormikProvider, useFormik } from 'formik';
+import { Button, CircularProgress } from '@mui/material';
+import { Field, Form, FormikProvider, useFormik } from 'formik';
+import { TextField } from 'formik-mui';
 import { signIn } from 'next-auth/react';
 
 import { signupSchema } from '@/shared/schema/signup-schema';
@@ -34,48 +35,14 @@ export function FormikSignupForm() {
         console.error('Signup failed:', error);
       }
     },
-    onReset(values, formikHelpers) {
-      formikHelpers.resetForm();
-    },
   });
 
   return (
     <FormikProvider value={formik}>
       <Form className="flex flex-col gap-2">
-        <TextField
-          id="email"
-          name="name"
-          label="Name"
-          variant="outlined"
-          fullWidth
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          error={formik.touched.name && Boolean(formik.errors.name)}
-          helperText={formik.touched.name && formik.errors.name}
-        />
-        <TextField
-          id="email"
-          name="email"
-          label="Email"
-          variant="outlined"
-          fullWidth
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-        />
-        <TextField
-          id="password"
-          name="password"
-          label="Password"
-          variant="outlined"
-          fullWidth
-          type="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
-        />
+        <Field component={TextField} name="name" type="text" label="Name" fullWidth />
+        <Field component={TextField} name="email" type="text" label="Email" fullWidth />
+        <Field component={TextField} name="password" type="password" label="Password" fullWidth />
         <Button
           type="submit"
           variant="contained"

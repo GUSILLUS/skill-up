@@ -1,6 +1,6 @@
 'use client';
 import { Button, CircularProgress, Paper, Typography } from '@mui/material';
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
 import { FormikSignupForm } from '@/features/formik-signup-form';
@@ -62,7 +62,7 @@ export default function Home() {
                     </>
                   ) : (
                     <>
-                      <Button variant="contained" color="primary" href="/api/auth/signin">
+                      <Button variant="contained" color="primary" onClick={() => signIn()}>
                         Sign In
                       </Button>
                       <Typography variant="caption" className="flex flex-col md:flex-row justify-center items-center">

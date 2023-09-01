@@ -1,5 +1,6 @@
-import { TextField, Button, Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
+import { TextField } from 'formik-mui';
 
 import { userSchema } from '@/shared/schema/user-schema';
 import { useUpdateUserMutation } from '@/shared/services/api';

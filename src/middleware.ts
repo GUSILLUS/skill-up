@@ -10,6 +10,4 @@ export default withAuth({
   },
 });
 
-export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)'],
-};
+export const config = { matcher: ['/formik', '/i18next', '/rtkq', '/profile'] };
