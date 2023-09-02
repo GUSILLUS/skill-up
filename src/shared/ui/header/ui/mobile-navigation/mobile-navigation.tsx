@@ -27,7 +27,7 @@ export const MobileNavigation = ({ navItems }: Props) => {
   };
 
   return (
-    <div className="md:hidden flex justify-end">
+    <div className="md:hidden flex justify-end items-center">
       <Toolbar>
         <Button color="inherit" onClick={() => toggleDrawer(true)}>
           <MenuIcon />
@@ -48,15 +48,8 @@ export const MobileNavigation = ({ navItems }: Props) => {
 
           {navItems.map(({ label, href }) => (
             <ListItem key={label}>
-              <Link href={href}>
-                <Button
-                  fullWidth={false}
-                  className="min-w-[100px]"
-                  size="medium"
-                  variant="contained"
-                  color="info"
-                  disabled={router.pathname === href}
-                >
+              <Link href={href} className="w-full">
+                <Button fullWidth size="medium" variant="contained" color="info" disabled={router.pathname === href}>
                   {label}
                 </Button>
               </Link>
@@ -65,10 +58,9 @@ export const MobileNavigation = ({ navItems }: Props) => {
 
           {session.data && (
             <ListItem>
-              <Link href="/profile">
+              <Link href="/profile" className="w-full">
                 <Button
-                  fullWidth={false}
-                  className="min-w-[100px]"
+                  fullWidth
                   size="medium"
                   variant="contained"
                   color="info"
@@ -84,8 +76,7 @@ export const MobileNavigation = ({ navItems }: Props) => {
 
         <ListItem>
           <Button
-            fullWidth={false}
-            className="min-w-[100px]"
+            fullWidth
             size="medium"
             variant="contained"
             color="info"
