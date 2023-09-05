@@ -1,12 +1,12 @@
 import type { AppProps } from 'next/app';
 import '@/style/common/globals.css';
 import Head from 'next/head';
+import { SessionProvider } from 'next-auth/react';
 import { Suspense } from 'react';
 import '@/shared/services/i18next/i18n';
 import { Provider } from 'react-redux';
 
 import { store } from '@/shared/services/store/store';
-import { AuthProvider } from '@/shared/ui/providers/auth-provider';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -17,11 +17,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Skill Up</title>
       </Head>
       <Provider store={store}>
-        <AuthProvider>
+        <SessionProvider>
           <Suspense fallback="loading">
             <Component {...pageProps} />
           </Suspense>
-        </AuthProvider>
+        </SessionProvider>
       </Provider>
     </>
   );
