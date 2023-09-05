@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import { UserCard } from '../user-card';
-import { User } from '@/shared/types/user';
 import { Dialog, DialogTitle, List } from '@mui/material';
+import { useState } from 'react';
+
+import { User } from '@/shared/types/user';
+
 import { ManageUserForm } from '../manage-user-form';
+import { UserCard } from '../user-card';
 
 type Props = {
-  users: User[],
+  users: User[];
   handleDelete: (userId: number) => Promise<void>;
   isLoading: boolean;
   handleUpdate: (updatedUser: User) => void;
-}
+};
 
 export const UserList = ({ users, handleDelete, isLoading, handleUpdate }: Props) => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
@@ -22,19 +24,24 @@ export const UserList = ({ users, handleDelete, isLoading, handleUpdate }: Props
     setSelectedUser(null);
   };
 
-
   return (
-    <div className='flex flex-col items-center bg-slate-100 w-full'>
-      <List className='flex flex-wrap justify-center'>
-        {users?.map((user) => (
-          <UserCard key={user.id} user={user} handleDelete={handleDelete} isLoading={isLoading} handleClick={handleEditClick} />
-        ))}
+    <List className="flex flex-wrap justify-center w-full bg-slate-100 rounded-md">
+      {users?.map(user => (
+        <UserCard
+          key={user.id}
+          user={user}
+          handleDelete={handleDelete}
+          isLoading={isLoading}
+          handleClick={handleEditClick}
+        />
+      ))}
 
-      <Dialog open={Boolean(selectedUser)} onClose={handleCancelEdit} className="p-3">
+      <Dialog open={Boolean(selectedUser)} onClose={handleCancelEdit}>
         <DialogTitle>Edit User</DialogTitle>
-        {selectedUser && <ManageUserForm type="update" user={selectedUser} onCancel={handleCancelEdit} onUpdate={handleUpdate} />}
+        {selectedUser && (
+          <ManageUserForm type="update" user={selectedUser} onCancel={handleCancelEdit} onUpdate={handleUpdate} />
+        )}
       </Dialog>
-      </List>
-    </div>
-  )
+    </List>
+  );
 };

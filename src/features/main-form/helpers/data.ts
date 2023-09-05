@@ -1,15 +1,15 @@
 import { Option } from '@/shared/types/option';
 
 export const roles: Option[] = [
-  { value: 'editor', label: 'Editor'},
-  { value: 'viewer', label: 'Viewer'},
-  { value: 'publisher', label: 'Publisher'},
-  { value: 'commentor', label: 'Commenter'},
-  { value: 'tester', label: 'Tester'},
+  { value: 'editor', label: 'Editor' },
+  { value: 'viewer', label: 'Viewer' },
+  { value: 'publisher', label: 'Publisher' },
+  { value: 'commentor', label: 'Commenter' },
+  { value: 'tester', label: 'Tester' },
 ];
 
 export const genders: Option[] = [
-  { value: 'male', label: 'Male'}, 
-  { value: 'female', label: 'Female'}, 
-  { value: 'other', label: 'Other'}, 
-]
+  { value: 'male', label: 'Male' },
+  { value: 'female', label: 'Female' },
+  { value: 'other', label: 'Other' },
+];

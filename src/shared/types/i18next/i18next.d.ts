@@ -1,9 +1,8 @@
-import Resources from "./resources";
-
+import Resources from './resources';
 
 declare module '18next' {
-  interface CustomTypeOptions {
+  type CustomTypeOptions = {
     defaultNS: 'translate';
     resources: Resources;
-  }
+  };
 }

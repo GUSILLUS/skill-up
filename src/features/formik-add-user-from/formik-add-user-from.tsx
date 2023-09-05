@@ -1,15 +1,15 @@
-import React from 'react';
-import { useAddUserMutation } from '@/shared/services/api'; 
-import { Field, Form, FormikProvider, useFormik } from 'formik';
-import { User } from '@/shared/types/user';
 import { Button, Typography } from '@mui/material';
+import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { TextField } from 'formik-mui';
-import { userSchema } from '@/shared/schema/userSchema';
+
+import { userSchema } from '@/shared/schema/user-schema';
+import { useAddUserMutation } from '@/shared/services/api';
+import { User } from '@/shared/types/user';
 
 type Props = {
   handleAdd: (newUser: User) => void;
-}
-export const FormikAddUserForm = ({handleAdd}: Props) => {
+};
+export const FormikAddUserForm = ({ handleAdd }: Props) => {
   const [addUser, { isLoading }] = useAddUserMutation();
 
   const formik = useFormik<User>({
@@ -22,7 +22,7 @@ export const FormikAddUserForm = ({handleAdd}: Props) => {
     validateOnBlur: true,
     validateOnChange: true,
     validationSchema: userSchema,
-    onSubmit: async (values) => {
+    onSubmit: async values => {
       const newUser = {
         name: values.name,
         email: values.email,
@@ -32,58 +32,29 @@ export const FormikAddUserForm = ({handleAdd}: Props) => {
       const user = await addUser(newUser);
       console.log(user);
 
-      if('data' in user) {
-       handleAdd(user.data)
+      if ('data' in user) {
+        handleAdd(user.data);
       }
       formik.resetForm();
     },
   });
 
   return (
-    <div className="w-3/12">
-      <Typography component="h2" variant="h5" className="text-center" >Add User</Typography>
+    <div className="w-full md:w-3/12">
+      <Typography component="h2" variant="h5" className="text-center">
+        Add User
+      </Typography>
       <FormikProvider value={formik}>
         <Form onSubmit={formik.handleSubmit} className="flex flex-col gap-2">
-          <Field
-            component={TextField}
-            name="name"
-            type="text"
-            label="Name"
-            fullWidth
-          />
-          <Field
-            component={TextField}
-            name="email"
-            type="text"
-            label="Email"
-            fullWidth
-          />
-          <Field
-            component={TextField}
-            name="username"
-            type="text"
-            label="Username"
-            fullWidth
-          />
-          <Field
-            component={TextField}
-            name="website"
-            type="text"
-            label="Website"
-            fullWidth
-          />
-          <Button 
-            type="submit" 
-            disabled={isLoading} 
-            variant="contained"
-            fullWidth={true}
-            color="primary"
-          >
+          <Field component={TextField} name="name" type="text" label="Name" fullWidth />
+          <Field component={TextField} name="email" type="text" label="Email" fullWidth />
+          <Field component={TextField} name="username" type="text" label="Username" fullWidth />
+          <Field component={TextField} name="website" type="text" label="Website" fullWidth />
+          <Button type="submit" disabled={isLoading} variant="contained" fullWidth={true} color="primary">
             Add User
           </Button>
-      </Form>
+        </Form>
       </FormikProvider>
-      
     </div>
   );
 };

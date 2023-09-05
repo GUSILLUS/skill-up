@@ -1,7 +1,7 @@
-import React from "react";
-import { User } from "@/shared/types/user";
-import { FormikAddUserForm } from "../formik-add-user-from";
-import { FormikUpdateUserForm } from "../formik-update-user-form";
+import { User } from '@/shared/types/user';
+
+import { FormikAddUserForm } from '../formik-add-user-from';
+import { FormikUpdateUserForm } from '../formik-update-user-form';
 
 type Props = AddProps | UpdateProps;
 
@@ -27,4 +27,4 @@ export const ManageUserForm = (props: Props) => {
       )}
     </>
   );
-}
+};
