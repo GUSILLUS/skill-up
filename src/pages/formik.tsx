@@ -1,6 +1,7 @@
 'use client';
 import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 import { Layout } from '@/shared/ui/layout';
 
@@ -15,5 +16,15 @@ export default function Home() {
     }, 2000);
   }, []);
 
-  return <Layout>{isLoading ? <CircularProgress size={80} /> : <MainForm />}</Layout>;
+  return (
+    <Layout>
+      {isLoading ? (
+        <CircularProgress size={80} />
+      ) : (
+        <Fade duration={1200} delay={200}>
+          <MainForm />
+        </Fade>
+      )}
+    </Layout>
+  );
 }

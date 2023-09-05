@@ -1,5 +1,6 @@
 import { Dialog, DialogTitle, List } from '@mui/material';
 import { useState } from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 import { User } from '@/shared/types/user';
 
@@ -25,16 +26,18 @@ export const UserList = ({ users, handleDelete, isLoading, handleUpdate }: Props
   };
 
   return (
-    <List className="flex flex-wrap justify-center w-full bg-slate-100 rounded-md">
-      {users?.map(user => (
-        <UserCard
-          key={user.id}
-          user={user}
-          handleDelete={handleDelete}
-          isLoading={isLoading}
-          handleClick={handleEditClick}
-        />
-      ))}
+    <List className="flex flex-col w-full  bg-slate-100 rounded-md">
+      <Fade cascade duration={600}>
+        {users?.map(user => (
+          <UserCard
+            key={user.id}
+            user={user}
+            handleDelete={handleDelete}
+            isLoading={isLoading}
+            handleClick={handleEditClick}
+          />
+        ))}
+      </Fade>
 
       <Dialog open={Boolean(selectedUser)} onClose={handleCancelEdit}>
         <DialogTitle>Edit User</DialogTitle>

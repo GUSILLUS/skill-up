@@ -1,6 +1,7 @@
 'use client';
 import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 import { ManageUserForm } from '@/features/manage-user-form';
 import { useDeleteUserMutation, useFetchUsersQuery } from '@/shared/services/api';
@@ -44,14 +45,19 @@ export default function Page() {
       {isLoading ? (
         <CircularProgress size={80} />
       ) : (
-        <div className="flex flex-col md:flex-row gap-2">
-          <UserList
-            users={showedUsers}
-            handleDelete={handleDelete}
-            isLoading={isDeleting}
-            handleUpdate={handleUpdate}
-          />
-          <ManageUserForm type="add" handleAdd={handleAdd} />
+        <div className="flex flex-col md:flex-row gap-2 justify-between">
+          <Fade delay={200} duration={1200}>
+            <UserList
+              users={showedUsers}
+              handleDelete={handleDelete}
+              isLoading={isDeleting}
+              handleUpdate={handleUpdate}
+            />
+          </Fade>
+
+          <Fade delay={200} duration={1200} className="w-full md:w-3/12">
+            <ManageUserForm type="add" handleAdd={handleAdd} />
+          </Fade>
         </div>
       )}
     </Layout>

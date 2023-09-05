@@ -11,4 +11,17 @@ export const signupSchema = yup.object().shape({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
       'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character',
     ),
+  file: yup
+    .mixed()
+    .required('Image is required')
+    .test(
+      'fileSize',
+      'File size is too large',
+      value => !value || (value as File).size <= 5242880, // 5MB limit
+    )
+    .test(
+      'fileType',
+      'Unsupported file type',
+      value => !value || ['image/jpeg', 'image/png'].includes((value as File).type),
+    ),
 });

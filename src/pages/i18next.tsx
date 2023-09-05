@@ -1,6 +1,7 @@
 'use client';
 import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 import { Layout } from '@/shared/ui/layout';
 
@@ -15,5 +16,15 @@ export default function Page() {
     }, 2000);
   }, []);
 
-  return <Layout>{isLoading ? <CircularProgress size={80} /> : <LanguageSwitcher />}</Layout>;
+  return (
+    <Layout>
+      {isLoading ? (
+        <CircularProgress size={80} />
+      ) : (
+        <Fade duration={1200} delay={200} className="w-full md:w-1/2">
+          <LanguageSwitcher />
+        </Fade>
+      )}
+    </Layout>
+  );
 }
