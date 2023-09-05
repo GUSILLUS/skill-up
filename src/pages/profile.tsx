@@ -16,8 +16,6 @@ export default function Profile() {
     }, 2000);
   }, []);
 
-  console.log(session);
-
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   // Call loadImage when the file prop changes
   useEffect(() => {
@@ -32,7 +30,6 @@ export default function Profile() {
 
         if (server.status === 200) {
           const response = await server.json();
-          console.log(response.file);
 
           setImageUrl(response.file);
         }
