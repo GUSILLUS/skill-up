@@ -26,7 +26,7 @@ export const UserList = ({ users, handleDelete, isLoading, handleUpdate }: Props
   };
 
   return (
-    <List className="flex flex-col w-full  bg-slate-100 rounded-md">
+    <List className="flex flex-col w-full bg-slate-100 rounded-md">
       <Fade cascade duration={600}>
         {users?.map(user => (
           <UserCard
