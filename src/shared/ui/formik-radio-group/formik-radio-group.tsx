@@ -5,6 +5,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { useFormikContext } from 'formik';
 import { FunctionComponent } from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 type RadioOption = {
   value: string;
@@ -28,9 +29,11 @@ export const FormikRadioGroup: FunctionComponent<RadioGroupProps> = ({ name, opt
     <FormControl>
       <FormControlLabel label={label} control={<Typography />} className="mr-5 pl-3" />
       <RadioGroup name={name} onChange={handleChange} row className="p-2">
-        {options.map((option, index) => (
-          <FormControlLabel key={index} value={option.value} control={<Radio />} label={option.label} />
-        ))}
+        <Fade cascade delay={300} duration={1200}>
+          {options.map((option, index) => (
+            <FormControlLabel key={index} value={option.value} control={<Radio />} label={option.label} />
+          ))}
+        </Fade>
       </RadioGroup>
     </FormControl>
   );

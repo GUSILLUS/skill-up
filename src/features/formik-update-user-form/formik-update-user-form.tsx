@@ -1,5 +1,5 @@
 import { Button, Grid } from '@mui/material';
-import { Formik, Form, Field } from 'formik';
+import { Form, Field, useFormik, FormikProvider } from 'formik';
 import { TextField } from 'formik-mui';
 
 import { userSchema } from '@/shared/schema/user-schema';
@@ -15,35 +15,41 @@ type Props = {
 export const FormikUpdateUserForm = ({ user, onCancel, onUpdate }: Props) => {
   const [updateUser, { isLoading }] = useUpdateUserMutation();
 
-  const handleSubmit = async (values: User) => {
-    try {
-      const updatedUser = await updateUser({ id: user.id || 0, updatedUser: values });
-      onCancel();
-      if ('data' in updatedUser) {
-        onUpdate(updatedUser.data);
+  const formik = useFormik<User>({
+    initialValues: user,
+    validateOnBlur: true,
+    validateOnChange: true,
+    validationSchema: userSchema,
+    onSubmit: async values => {
+      try {
+        const updatedUser = await updateUser({ id: user.id || 0, updatedUser: values });
+        onCancel();
+        if ('data' in updatedUser) {
+          onUpdate(updatedUser.data);
+        }
+      } catch (error) {
+        console.error('Error updating user:', error);
       }
-    } catch (error) {
-      console.error('Error updating user:', error);
-    }
-  };
+    },
+  });
 
   return (
-    <Formik initialValues={user} onSubmit={handleSubmit} validationSchema={userSchema}>
+    <FormikProvider value={formik}>
       <Form className="p-2">
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Field name="name" as={TextField} label="Name" fullWidth />
+            <Field name="name" component={TextField} label="Name" fullWidth />
           </Grid>
           <Grid item xs={12}>
-            <Field name="username" as={TextField} label="Username" fullWidth />
+            <Field name="username" component={TextField} label="Username" fullWidth />
           </Grid>
           <Grid item xs={12}>
-            <Field name="email" as={TextField} label="Email" fullWidth />
+            <Field name="email" component={TextField} label="Email" fullWidth />
           </Grid>
           <Grid item xs={12}>
-            <Field name="website" as={TextField} label="Website" fullWidth />
+            <Field name="website" component={TextField} label="Website" fullWidth />
           </Grid>
-          <Grid item xs={12} spacing={2}>
+          <Grid item xs={12}>
             <div className="flex gap-2">
               <Button type="submit" variant="contained" color="primary" size="small" disabled={isLoading}>
                 Update User
@@ -55,6 +61,6 @@ export const FormikUpdateUserForm = ({ user, onCancel, onUpdate }: Props) => {
           </Grid>
         </Grid>
       </Form>
-    </Formik>
+    </FormikProvider>
   );
 };

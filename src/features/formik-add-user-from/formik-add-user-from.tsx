@@ -40,12 +40,12 @@ export const FormikAddUserForm = ({ handleAdd }: Props) => {
   });
 
   return (
-    <div className="w-full md:w-3/12">
+    <div>
       <Typography component="h2" variant="h5" className="text-center">
         Add User
       </Typography>
       <FormikProvider value={formik}>
-        <Form onSubmit={formik.handleSubmit} className="flex flex-col gap-2">
+        <Form className="flex flex-col gap-2">
           <Field component={TextField} name="name" type="text" label="Name" fullWidth />
           <Field component={TextField} name="email" type="text" label="Email" fullWidth />
           <Field component={TextField} name="username" type="text" label="Username" fullWidth />

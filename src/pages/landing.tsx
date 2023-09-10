@@ -3,11 +3,10 @@ import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 
+import { LandingPage } from '@/features/landing-page';
 import { Layout } from '@/shared/ui/layout';
 
-import { MainForm } from '../features/main-form';
-
-export default function Home() {
+export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -21,8 +20,8 @@ export default function Home() {
       {isLoading ? (
         <CircularProgress size={80} />
       ) : (
-        <Fade duration={1200} delay={200}>
-          <MainForm />
+        <Fade duration={1200} delay={200} className="w-full md:w-1/2">
+          <LandingPage />
         </Fade>
       )}
     </Layout>

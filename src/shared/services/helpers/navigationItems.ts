@@ -5,4 +5,5 @@ export const navItems: NavItem[] = [
   { label: 'Formik', href: '/formik' },
   { label: 'I18next', href: '/i18next' },
   { label: 'Rtkq', href: '/rtkq' },
+  { label: 'Animations', href: '/landing' },
 ];

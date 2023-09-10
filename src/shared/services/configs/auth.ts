@@ -27,6 +27,7 @@ export const authConfig: AuthOptions = {
         const usersCollection = client.db(process.env.DB_NAME).collection('users');
         const email = credentials?.email.toLowerCase();
         const user = await usersCollection.findOne({ email });
+
         if (!user) {
           throw new Error('User does not exist.');
         }
