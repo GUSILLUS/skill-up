@@ -22,7 +22,7 @@ export function FormikSignupForm() {
     validationSchema: signupSchema,
     onSubmit: async values => {
       try {
-        const server = await fetch('/api/signup/signup', {
+        const response = await fetch('/api/signup/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export function FormikSignupForm() {
           body: JSON.stringify({ ...values, file: imageUrl }),
         });
 
-        if (server.status === 200) {
+        if (response.status === 200) {
           signIn('credentials', {
             email: values.email.toLowerCase(),
             password: values.password,
